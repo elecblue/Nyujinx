@@ -18,16 +18,18 @@ env:
   POWERSHELL_TELEMETRY_OPTOUT: 1
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
   RYUJINX_BASE_VERSION: "1.1"
-  RYUJINX_TARGET_RELEASE_CHANNEL_NAME: "master"
-  RYUJINX_TARGET_RELEASE_CHANNEL_OWNER: "Nyujinx"
-  RYUJINX_TARGET_RELEASE_CHANNEL_REPO: "release-channel-master"
-
-permissions: write-all
+  RYUJINX_TARGET_RELEASE_CHANNEL_NAME: "main"
+  RYUJINX_TARGET_RELEASE_CHANNEL_OWNER: "elecblue"
+  RYUJINX_TARGET_RELEASE_CHANNEL_REPO: "release-channel-main"
 
 jobs:
   tag:
     name: Create tag
-    runs-on: ubuntu-20.04      
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - name: Get version info
         id: version_info
@@ -60,6 +62,10 @@ jobs:
   release:
     name: Release for ${{ matrix.platform.name }}
     runs-on: ${{ matrix.platform.os }}
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     timeout-minutes: ${{ fromJSON(vars.JOB_TIMEOUT) }}
     strategy:
       matrix:
