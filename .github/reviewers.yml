@@ -1,25 +1,18 @@
 
 cpu:
-  - gdkchan
-  - riperiperi
-  - LDj3SNuD
+  - elecblue
 
 gpu:
-  - gdkchan
-  - riperiperi
+  - elecblue
 
 gui:
-  - Ack77
-  - emmauss
-  - TSRBerry
+  - elecblue
 
 horizon:
-  - gdkchan
-  - Ack77
-  - TSRBerry
+  - elecblue
 
 infra:
-  - TSRBerry
+  - elecblue
 
 default:
   - '@developers'
